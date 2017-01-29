@@ -20,34 +20,59 @@ if __name__ == '__main__':
     ROA_df = pd.read_csv('ROA.csv',sep='\s+')
     ROA_df['datadate'] = pd.to_datetime(ROA_df['datadate'],format="%d%b%Y")
     ROA_df = ROA_df.dropna(axis=0)
+    ROA_df['notified_datadate'] = [x+dateutil.relativedelta.relativedelta(months=5) for x in ROA_df['datadate']]
+    
     # datetime.datetime.strptime(ROA_df['datadate'],'%Y%m')
     # ROA_df['datadate_1'] = [x+dateutil.relativedelta.relativedelta(months=1)-dateutil.relativedelta.relativedelta(days=1) for x in ROA_df['datadate']]
     return_df = pd.read_csv('stockreturns.csv',sep='\s+',converters={'firm_id':np.int64,'ret':np.float64,'year':np.str,'month':np.str},engine='python')
     return_df = return_df[return_df['month']!='None'] # Drop None data
     return_df['datadate'] = pd.to_datetime((return_df['year'] + return_df['month']), format='%Y%m')
-    return_df['datadate_1'] = return_df['datadate']+dateutil.relativedelta.relativedelta(months=1)-dateutil.relativedelta.relativedelta(days=1)
-    return_df['datadate_1'] = [x+dateutil.relativedelta.relativedelta(months=1)-dateutil.relativedelta.relativedelta(days=1) for x in return_df['datadate']]
+    # return_df['datadate_1'] = return_df['datadate']+dateutil.relativedelta.relativedelta(months=1)-dateutil.relativedelta.relativedelta(days=1)
+    return_df['notified_datadate'] = [x+dateutil.relativedelta.relativedelta(months=1)-dateutil.relativedelta.relativedelta(days=1) for x in return_df['datadate']]
         
     
+    
+    
+    
     num_group = ROA_df.groupby('datadate').count()
+    ROA_df['percentile']=ROA_df.groupby('datadate')['ROA'].rank(pct=True)
+    
+    
+    
+    ### Merge two dataframe
+    merged_df = pd.merge(return_df,ROA_df,how='left',on=['notified_datadate','firm_id'])
+    
+    ROA_df.groupby('datadate').apply(lambda x: x[x['percentile']>0.8].mean())
 
+
+
+
+
+
+
+    # Another method
+    date_list = num_group.index
+    
+    for i in date_list:
+        monthly_table = ROA_df[ROA_df['datadate']==i]
+        monthly_table.loc[:,'decile'] = pd.Series(np.array(pd.qcut(monthly_table['ROA'].values,5,labels=['0.2','0.4','0.6','0.8','1'])),index=monthly_table.index)
+        # monthly_table = monthly_table.assign(e=pd.Series(pd.qcut(monthly_table['ROA'].values,5,labels=['0.2','0.4','0.6','0.8','1'])))
+
+    # one method
 
     top_ROA = ROA_df.groupby('datadate')['ROA'].quantile(0.8)
     bottom_ROA = ROA_df.groupby('datadate')['ROA'].quantile(0.2)
 
-
-
+    date_list = top_ROA.index
+    
+    for i in date_list:
+        ROA_df[ROA_df['datadate']==i]
 
 df = pd.DataFrame(np.array([[1, 1], [2, 10], [3, 100], [4, 100]]),columns=['a', 'b'])    
     
 '''    
     
                             ,parse_dates={'datetime':['year']},date_parser=lambda x: pd.datetime.strptime(x, '%Y'))
-    
-    
-    
-    
-    
     
     return_df['datadate'] = pd.to_datetime(return_df[['year','month']])
     datetime.date(year=return_df['year'].values,month=return_df['month'].values)
@@ -57,12 +82,7 @@ df = pd.DataFrame(np.array([[1, 1], [2, 10], [3, 100], [4, 100]]),columns=['a', 
     
     num_group = ROA_df.groupby('datadate').count()
     
-    
-    
-    
-    
-    
-    
+      
     
     a = pd.qcut(ROA_df['ROA'].values,5)
     
