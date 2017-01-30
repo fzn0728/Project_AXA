@@ -1,0 +1,68 @@
+Industry
+Crops
+Livestock
+Agri-Services
+Metal Mining
+Coal Mining
+Oil and Gas Extraction
+Mining and Quarrying of Nonmetallic Minerals, Except Fuels
+Construction - General Contractors & Operative Builders
+Heamy Construction, Except Building Construction, Contractor
+Construction - Special Trade Contractors
+Food and Kindred Products
+Tobacco Products
+Textile Mill Products
+Apparel, Finished Products from Fabrics & Similar Materials
+Lumber and Wood Products, Except Furniture
+Furniture and Fixtures
+Paper and Allied Products
+Printing, Publishing and Allied Industries
+Chemicals and Allied Products
+Petroleum Refining and Related Industries
+Rubber and Miscellaneous Plastic Products
+Leather and Leather Products
+Stone, Clay, Glass, and Concrete Products
+Primary Metal Industries
+Fabricated Metal Products
+Industrial and Commercial Machinery and Computer Equipment
+Electronic & Other Electrical Equipment & Components
+Transportation Equipment
+Measuring, Photographic, Medical, & Optical Goods, & Clocks
+Miscellaneous Manufacturing Industries
+Railroad Transportation
+Local & Suburban Transit & Interurban Highway Transportation
+Motor Freight Transportation
+Water Transportation
+Transportation by Air
+Pipelines, Except Natural Gas
+Transportation Services
+Communications
+Electric, Gas and Sanitary Services
+Wholesale Trade - Durable Goods
+Wholesale Trade - Nondurable Goods
+Building Materials, Hardware, Garden Supplies & Mobile Homes
+General Merchandise Stores
+Food Stores
+Automotive Dealers and Gasoline Service Stations
+Apparel and Accessory Stores
+Home Furniture, Furnishings and Equipment Stores
+Eating and Drinking Places
+Miscellaneous Retail
+Depository Institutions
+Nondepository Credit Institutions
+Security & Commodity Brokers, Dealers, Exchanges & Services
+Insurance Carriers
+Insurance Agents, Brokers and Service
+Real Estate
+Holding and Other Investment Offices
+Hotels, Rooming Houses, Camps, and Other Lodging Places
+Personal Services
+Business Services
+Automotive Repair, Services and Parking
+Motion Pictures
+Amusement and Recreation Services
+Health Services
+Educational Services
+Social Services
+Engineering, Accounting, Research, and Management Services
+Nonclassifiable Establishments
